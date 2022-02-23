@@ -1,0 +1,154 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <title>Validacion de usuarios</title>  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+</head>
+<body> 
+<div data-role="page" id="inicio">
+<img src="http://asis.usbmed.edu.co/pruebas/comun/images/LOGO.png" width="100%">
+
+  <div data-role="header">
+		<h1>Autenticacion USB</h1>
+       </div>    
+	<div data-role="content">	
+		<form id="formulario" >      
+      			<label> Usuario </label>
+      			<input type="text" id="nombredeusuario" name="nombredeusuario" value="8128888">      
+      			<label> Password </label>
+     			<input type="password" id="clave" name="clave" value="x3245*ad98" >
+      			<input type="submit" value="Login" id="botonLogin">      
+    		</form>		
+	</div>	 
+</div> 
+<div data-role="page" id="home">
+<img src="http://asis.usbmed.edu.co/pruebas/comun/images/LOGO.png" width="100%">
+
+	<div data-role="header">
+		<h1>Bienvenido</h1>
+	</div>
+	<div data-role="content">	
+		<ul data-role="listview">
+			<li><a href="#estudiante"><img src="http://asis.usbmed.edu.co/comun/images/estudiante.png"  height="50" width="50" >Estudiantes</a></li>
+            <li><a href="#Docentes"><img src="http://asis.usbmed.edu.co/comun/images/docente.png" height="50" width="50" >Docentes</a></li>
+			<li><a href="#Empleados"><img src="http://asis.usbmed.edu.co/comun/images/empleado.png"  height="50" width="50" >Empleados</a></li>
+		</ul>		
+	</div>
+</div>
+ <div data-role="content" id="estudiante" data-add-back-btn="true">	
+<img src="http://asis.usbmed.edu.co/pruebas/comun/images/LOGO.png" width="100%">
+
+   <div data-role="header">
+ <h1>Seleccione su Opción</h1>
+ </div>
+		<ul data-role="listview">      
+			<li><a href="#turno_matricula">Turno Matricula</a></li>
+            <li><a href="#listadogeneral">Historico de Notas</a></li>
+			<li><a href="#Empleados">Consulta de Notas</a></li>            
+            <li><a href="#Empleados">Horarios Matriculados</a></li>
+            <li><a href="#Empleados">Asignaturas Pendientes por Cursar</a></li>
+            <li><a href="#Empleados">Asistencia a Catedras</a></li>
+            <li><a href="#Empleados">Notas Extensi&oacute;n - Ingl&eacute;s</a></li>
+            </ul>
+     </div>
+<div data-role="page" id="listadogeneral" data-add-back-btn="true">
+<img src="http://asis.usbmed.edu.co/pruebas/comun/images/LOGO.png" width="100%">
+
+  <div data-role="header">
+ <h1>Listado de Materias</h1>
+ 
+ </div>
+<div  data-role="content">
+<ul id="reporte" data-role="listview">
+</ul>
+</div>
+</div>
+<div data-role="page" id="turno_matricula" data-add-back-btn="true">
+<img src="http://asis.usbmed.edu.co/pruebas/comun/images/LOGO.png" width="100%">
+
+  <div data-role="header">
+ <h1>Turno Matricula</h1>
+  </div>
+   <p>&nbsp;</p>
+<div  data-role="content">
+
+<ul id="reporte_turno" data-role="listview">
+</ul>
+</div>
+</div>
+<script>
+  $('#turno_matricula').live('pageshow', function(event)
+  {
+	  //la idea es que lleve este codigo a el php para poder hacer la consulta.
+	  var cod_user = "1028984" 
+// chicharron para yesenia
+	  $.getJSON('http://asis.usbmed.edu.co/pruebas/jp/turno_matricula.php',{cod_user:cod_user}, function (data)
+	  {  
+		  var datos = data.PERSONA;
+		  $.each(datos, function(dato, persona)
+		  {
+			  var CODIGO_ESTUDIANTE=persona.CODIGO_ESTUDIANTE;
+			  var FECHA_MATRICULA=persona.FECHA_MATRICULA;
+			  var hora=persona.hora;
+			  
+			  $('#reporte_turno').html('<table width="50%" border=1 align="center"><tr width="90%"><td width="5%" align="center">'+
+			  '<h4>'+CODIGO_ESTUDIANTE+'</h4>' + '</td><td width="90%" align="center">'+
+			  '<h4>'+FECHA_MATRICULA+'</h4>' + '</td><td width="10%" align="center">'+
+			  '<h4>'+hora+ '</h4>' + '</td></tr></table>');
+		  });
+		  $('#reporte_turno').listview('refresh');
+	  });
+  });
+  </script>
+<script>
+
+  $('#listadogeneral').live('pageshow', function(event)
+  {
+	  //la idea es que lleve este codigo a el php para poder hacer la consulta.
+	  var user = "992870" 
+// chicharron para yesenia
+	  $.getJSON('http://asis.usbmed.edu.co/pruebas/jp/consulta_historico.php',{user:user}, function (data)
+	  {  
+		  var datos = data.PERSONA;
+		  $('#reporte').empty();
+		  $.each(datos, function(dato, persona)
+		  {
+			  var SEMESTRE_PLAN=persona.SEMESTRE_PLAN;
+			  var MATERIA=persona.MATERIA;
+			  var nota=persona.nota;
+			
+			  $('#reporte').append('<table width="90%" border=1 align="center"><tr width="90%"><td width="5%">'+
+			  '<h4>'+SEMESTRE_PLAN+'</h4>' + '</td><td width="90%">'+
+			  '<h4>'+MATERIA+'</h4>' + '</td><td width="10%">'+
+			  '<h4>'+nota+ '</h4>' + '</td></tr></table>');
+		  });
+		  $('#reporte').listview('refresh');
+	  });
+  });
+  </script>   
+<script>
+$('#formulario').submit(function() { 	 
+	// recolecta los valores que inserto el usuario
+	var datosUsuario = $("#nombredeusuario").val()
+	var datosPassword = $("#clave").val()	
+  	archivoValidacion = "http://asis.usbmed.edu.co/pruebas/jp/validacion_de_datos?jsoncallback=?"
+	$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
+	.done(function(respuestaServer) {		
+		//alert(respuestaServer.validacion)		
+		if(respuestaServer.validacion == "ok"+datosUsuario){		  
+		 	/// si la validacion es correcta, muestra la pantalla "home"
+			$.mobile.changePage("#home")		  
+		}else{		  
+		  /// ejecutar una conducta cuando la validacion falla
+		}  
+	})
+	return false;
+})
+	
+</script>
+
+ 
+</body>
+</html>

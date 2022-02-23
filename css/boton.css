@@ -1,0 +1,32 @@
+.button {
+	border: none;
+   border-top: 1px solid #f5e198;
+   background: #d4b865;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fc930a), to(#d4b865));
+   background: -webkit-linear-gradient(top, #fc930a, #d4b865);
+   background: -moz-linear-gradient(top, #fc930a, #d4b865);
+   background: -ms-linear-gradient(top, #fc930a, #d4b865);
+   background: -o-linear-gradient(top, #fc930a, #d4b865);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 14px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #fc930a;
+   background: #fc930a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #fc930a;
+   background: #fc930a;
+   }

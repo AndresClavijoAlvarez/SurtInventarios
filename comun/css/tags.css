@@ -1,0 +1,73 @@
+   <style type="text/css">
+<!--
+.tooltip {
+    display: inline;
+    position: relative;
+    opacity: .95;
+   -moz-opacity: .95;
+   filter:alpha(opacity=95);
+
+  }
+  .tooltip:hover:after {
+    /*top: 20px; cuadrado debajo*/
+    bottom:26px;/* cuadrado Encima*/    
+    content: attr(original-title); /* este es el texto que será mostrado */
+    left: 20%;
+    position: absolute;
+    z-index: 500;
+    /* el formato gráfico */
+   /*background: rgba(255,255,255, 0.2) ;*/
+    background: orange ;
+    border-radius: 5px;
+    color: #FFF; /* el color del texto */
+    font-family: Georgia;
+    font-size: 12px;
+    padding: 5px 15px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    width: 150px;
+
+  }
+  .tooltip:hover:before {
+    /*top: 20px; triangulo debajo*/
+    bottom:20px;/* triangulo Encima*/
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 500;
+    /* el triángulo inferior */
+    border: solid;
+    /*border-color: rgba(255,255,255, 0.2) transparent;*/
+    border-color: orange transparent;
+    /* border-width: 0 6px 6px 6px; Triangulo sentido arriba*/
+    border-width: 6px 6px 0 6px; /* Triangulo sentido abajo*/
+
+  }
+.Estilo3 {color: #FFFFFF}
+-->
+#boton3{ 
+background:-moz-linear-gradient(#fff 0%,#DEDEDE 100%);
+background:-ms-linear-gradient(#fff 0%,#DEDEDE 100%); 
+background:-o-linear-gradient(#fff 0%,#DEDEDE 100%); 
+background:-webkit-linear-gradient(#fff 0%,#DEDEDE 100%);
+background:linear-gradient(#fff 0%,#DEDEDE 100%);
+border:solid 1px #DEDEDE;
+border-radius:5px;
+text-align:center;
+padding:5px;
+color:#f90;
+width:75px; 
+} 
+#boton3:hover{
+background:-moz-linear-gradient(#f90 0%,#F63 100%);
+background:-ms-linear-gradient(#f90 0%,#F63 100%);
+background:-o-linear-gradient(#f90 0%,#F63 100%);
+background:-webkit-linear-gradient(#f90 0%,#F63 100%);
+background:linear-gradient(#f90 0%,#F63 100%);
+  color:#fff; 
+padding:8px;
+width:100px; 
+font-size:18px;
+text-shadow:0 0 10px #FFF; 
+}
+   </style>
